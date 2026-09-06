@@ -356,7 +356,7 @@ export function searchVault(rawQuery: string): SearchResult {
       // Direct substring match
       const directTextMatch = docName.includes(q) || docType.includes(q) || docNum.includes(q);
 
-      if ((docMatchesType || directTextMatch || (queryYear && matchesYear)) && matchesYear) {
+      if ((docMatchesType || directTextMatch || (queryYear ? matchesYear : false)) && matchesYear) {
         if (!hasSpecificLocation || propMatchesLocation) {
           results.push({ doc, property: prop });
           matchedPropSet.add(prop.id);
